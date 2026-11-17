@@ -1,0 +1,18 @@
+#include "button.h"
+
+void button_init(){
+	RST_CLK_PER_CLOCK |= RST_CLK_PER_CLOCK_PORTA_EN;
+	
+	PORTA_OE &= ~BUTTON_MASK;
+	PORTA_FUNC &= ~BUTTON_CONFIG_MASK;
+	PORTA_ANALOG |= BUTTON_MASK;
+	PORTA_PULL   |= BUTTON_PULL_DOWN_MASK;
+	PORTA_PULL   &= ~BUTTON_PULL_UP_MASK;
+}
+
+button_state_t button_get_state(){
+	if (PORTA_RXTX & BUTTON_MASK){
+		return BUTTON_PRESSED;
+	}
+	return BUTTON_RELEASED;
+}
