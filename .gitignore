@@ -65,3 +65,9 @@ blendcache_*/
 *.log
 *.tmp
 *.bak
+
+# Keil
+Objects/
+Listings/
+*.uvguix
+*.uvguix.*
